@@ -1,57 +1,57 @@
-# Git Workflow Strategy
+# Git Branching Strategy
 
-## Branching Strategy
-We use a **Gitflow-inspired** branching model with the following branches:
+## Branch Types
 
-### 1. `main`
-- The stable production-ready branch.
-- Only updated via **pull requests (PRs)** from `develop`.
-- Requires code review and successful CI/CD pipeline before merging.
+### Main Branch
+- The stable production-ready branch
+- Only updated via **pull requests (PRs)** from feature branches
+- Requires code review before merging
+- Should always be in a deployable state
 
-### 2. `develop`
-- The main integration branch for ongoing development.
-- New features and fixes are merged here before being released.
-- Updated via feature branches (`feature/*`) and bugfix branches (`bugfix/*`).
+### Feature Branches
+- Created from `main` branch
+- Naming convention: `feature/<task_name>`
+- Used for developing new features or fixing bugs
+- Should be short-lived (1-2 weeks maximum)
+- Must be up-to-date with `main` before creating PR
 
-### 3. `feature/*`
-- Used for developing new features.
-- Branch off from `develop`.
-- Merged back into `develop` after completion via PR.
-- Naming convention: `feature/<feature-name>`.
+## Workflow
 
-### 4. `bugfix/*`
-- Used for fixing bugs found in `develop` before release.
-- Branch off from `develop`.
-- Merged back into `develop` via PR.
-- Naming convention: `bugfix/<bug-name>`.
+1. Create a new feature branch from `main`:
+   ```bash
+   git checkout main
+   git pull origin main
+   git checkout -b feature/your-task-name
+   ```
 
-### 5. `hotfix/*`
-- Used for critical fixes in production.
-- Branch off from `main`.
-- Merged back into `main` **and** `develop`.
-- Naming convention: `hotfix/<hotfix-name>`.
+2. Develop your feature:
+   - Make regular commits
+   - Keep commits focused and meaningful
+   - Write clear commit messages
 
-### 6. `release/*`
-- Used to prepare a new production release.
-- Branch off from `develop`.
-- Merged into `main` and `develop` after testing.
-- Naming convention: `release/<version>`.
+3. Keep your branch up-to-date with `main`:
+   ```bash
+   git checkout main
+   git pull origin main
+   git checkout feature/your-task-name
+   git merge main
+   ```
 
-## Git Rules
+4. Create a Pull Request:
+   - From your feature branch to `main`
+   - Include a clear description of changes
+   - Request code review
+   - Address any review comments
 
-### General Rules
-- Use **meaningful commit messages**.
-- Keep commits **small and focused**.
-- Use **rebase instead of merge** when updating feature branches.
-- Ensure **all tests pass** before merging.
-- Every PR must be **reviewed by at least one team member**.
+5. After approval:
+   - Merge the PR into `main`
+   - Delete the feature branch
 
-### Pull Request Guidelines
-- PRs should have **clear descriptions** and link to relevant issues.
-- PRs should be **small and focused** (avoid large PRs).
-- PRs should be **assigned reviewers**.
-- CI/CD pipeline must pass before merging.
+## Best Practices
 
-### Branch Deletion Policy
-- Feature, bugfix, hotfix, and release branches should be deleted after merging.
-- Use `git branch -d <branch>` locally and `git push origin --delete <branch>` remotely.
+- Never commit directly to `main`
+- Keep feature branches focused on a single task
+- Regular commits with clear messages
+- Keep branches up-to-date with `main`
+- Delete feature branches after merging
+- Use meaningful branch names that reflect the task
