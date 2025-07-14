@@ -1,0 +1,16 @@
+{
+  "LoginPage": {
+    "Title": "Swag Labs",
+    "UsernameLabel": "Username",
+    "PasswordLabel": "Password",
+    "SubmitButton": "Login",
+    "ErrorInvalidCredentials": "Epic sadface: Username and password do not match any user in this service"
+  },
+  "Inventory": {
+    "Title": "Products"
+  },
+  "Common": {
+    "Loading": "Loading...",
+    "Error": "An error occurred. Please try again."
+  }
+} 
