@@ -1,0 +1,32 @@
+# Node.js / npm
+node_modules/
+npm-debug.log
+yarn-error.log
+yarn.lock
+
+# Log & timeless files
+*.log
+*.tmp
+*.bak
+*.swp
+.DS_Store
+Thumbs.db
+
+# Confidential files
+.env
+.env.local
+.env.*.local
+!.env.example
+*.pem
+*.crt
+*.key
+
+# Cypress
+cypress/screenshots/
+cypress/videos/
+cypress/downloads/
+
+# VS Code
+.vscode/
+.history/
+.idea/
