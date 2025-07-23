@@ -1,18 +1,14 @@
 // cypress/support/selectors.js
 
-const Selectors = {
-  Login: {
-    UsernameInput: '#user-name',
-    PasswordInput: '#password',
-    SubmitButton: '#login-button',
-    ErrorMessage: '[data-test="error"]'
-  },
-  Inventory: {
-    ProductTitle: '.inventory_item_name',
-    AddToCartButton: '.btn_inventory',
-    CartIcon: '.shopping_cart_link'
-  },
-  // Add more as needed
-};
+// Login selectors
+export const UsernameInput = '#user-name';
+export const PasswordInput = '#password';
+export const SubmitButton = '#login-button';
+export const ErrorMessage = '[data-test="error"]';
 
-module.exports = Selectors; 
+// Inventory selectors
+export const ProductTitle = '.inventory_item_name';
+export const AddToCartButton = '.btn_inventory';
+export const CartIcon = '.shopping_cart_link';
+
+// Add more as needed 
