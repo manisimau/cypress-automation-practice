@@ -14,7 +14,7 @@ Cypress.Commands.add('login', (username, password) => {
 });
 
 describe('Login Page UI (saucedemo.com)', { testIsolation: false }, () => {
-  beforeEach(() => {
+  before(() => {
     cy.visit(Urls.Login);
   });
 
